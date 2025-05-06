@@ -79,9 +79,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 relative">
+        <div className="flex items-center w-1/5 justify-between">
           <div
-            className="border-r-2 border-l-2 px-2 flex items-center"
+            className="border-r border-l px-2 flex items-center"
             ref={notificationRef}
             onClick={() => setOpenNotifications(!openNotifications)}
           >
