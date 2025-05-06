@@ -7,8 +7,8 @@ import { useState, useRef, useEffect } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const avatarRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
 
   const dropdownMenu = [
     { icon: <FaUser />, text: "Profile", path: "/profile" },
@@ -18,11 +18,11 @@ const Navbar = () => {
 
   // Close dropdown if clicked outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target) &&
-        !avatarRef.current.contains(event.target)
+        !dropdownRef.current.contains(event.target as Node) &&
+        !(avatarRef.current && avatarRef.current.contains(event.target as Node))
       ) {
         setOpen(false);
       }
