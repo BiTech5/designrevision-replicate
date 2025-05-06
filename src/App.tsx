@@ -4,6 +4,7 @@ import Table from "./pages/table"
 import Footer from "./components/layout/footer"
 import { Routes, Route } from "react-router-dom"
 import Blog from "./pages/blog_posts"
+import Profile from "./pages/profile"
 import NotFound from "./components/Error/404"
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/posts" element={<Blog />} />
             <Route path="/tables" element={<Table />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
         <Footer />
