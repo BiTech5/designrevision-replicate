@@ -14,7 +14,7 @@ const Blog = () => {
         }, []
     )
     return (
-        <div className="p-4 md:p-8 bg-gray-100 h-full">
+        <div className="h-full">
             <div>
                 <span className="text-xs text-gray-500">COMPONENTS</span>
                 <h1 className="text-3xl text-gray-600">Blog Posts</h1>
