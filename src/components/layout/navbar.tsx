@@ -6,25 +6,42 @@ import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const avatarRef = useRef<HTMLDivElement>(null);
+  const [openProfile, setOpenProfile] = useState(false);
+  const [openNotifications, setOpenNotifications] = useState(false);
+  const profileDropdownRef = useRef<HTMLDivElement | null>(null);
+  const avatarRef = useRef<HTMLDivElement | null>(null);
+  const notificationDropdownRef = useRef<HTMLDivElement | null>(null);
+  const notificationRef = useRef<HTMLDivElement | null>(null);
 
-  const dropdownMenu = [
+  const profileDropdownMenu = [
     { icon: <FaUser />, text: "Profile", path: "/profile" },
     { icon: <MdVerticalSplit />, text: "Blog Posts", path: "/posts" },
     { icon: <MdNoteAdd />, text: "Add New Post", path: "/new" },
   ];
 
-  // Close dropdown if clicked outside
+  const notificationMenu = [
+    { text: "New comment on your post", time: "5m ago" },
+    { text: "Post liked by John Doe", time: "10m ago" },
+    { text: "New follower: Jane Smith", time: "1h ago" },
+  ];
+
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event:MouseEvent) => {
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node) &&
-        !(avatarRef.current && avatarRef.current.contains(event.target as Node))
+        profileDropdownRef.current &&
+        !profileDropdownRef.current.contains(event.target as Node) &&
+        avatarRef.current &&
+        !avatarRef.current.contains(event.target as Node)
       ) {
-        setOpen(false);
+        setOpenProfile(false);
+      }
+      if (
+        notificationDropdownRef.current &&
+        !notificationDropdownRef.current.contains(event.target as Node) &&
+        notificationRef.current &&
+        !notificationRef.current.contains(event.target as Node)
+      ) {
+        setOpenNotifications(false);
       }
     };
 
@@ -35,7 +52,6 @@ const Navbar = () => {
   return (
     <>
       <div className="w-full h-14 shadow-md flex items-center px-4 justify-between relative bg-white z-30">
-        {/* Search Bar */}
         <div className="flex items-center w-4/5">
           <div className="flex items-center w-full bg-transparent px-3 py-2 rounded-md text-sm text-gray-700">
             <svg
@@ -63,13 +79,37 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Notification + Avatar */}
         <div className="flex items-center gap-4 relative">
-          <MdNotifications className="text-gray-400 text-3xl cursor-pointer" />
+          <div
+            className="border-r-2 border-l-2 px-2 flex items-center"
+            ref={notificationRef}
+            onClick={() => setOpenNotifications(!openNotifications)}
+          >
+            <MdNotifications className="text-gray-400 text-3xl cursor-pointer" />
+          </div>
+
+          {openNotifications && (
+            <div
+              ref={notificationDropdownRef}
+              className="absolute top-16 right-12 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-dropdown"
+            >
+              <ul className="py-2 text-sm">
+                {notificationMenu.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start px-4 py-2 hover:bg-gray-100 text-gray-700"
+                  >
+                    <span className="truncate flex-1">{item.text}</span>
+                    <span className="text-xs text-gray-400 ml-2">{item.time}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div
             className="flex items-center cursor-pointer"
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpenProfile(!openProfile)}
             ref={avatarRef}
           >
             <div className="avatar">
@@ -86,14 +126,13 @@ const Navbar = () => {
             </span>
           </div>
 
-          {/* Dropdown */}
-          {open && (
+          {openProfile && (
             <div
-              ref={dropdownRef}
+              ref={profileDropdownRef}
               className="absolute top-16 right-0 mt-2 w-52 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-dropdown"
             >
               <ul className="py-2 text-sm">
-                {dropdownMenu.map((item) => (
+                {profileDropdownMenu.map((item) => (
                   <li key={item.path}>
                     <Link
                       to={item.path}
