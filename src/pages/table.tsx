@@ -37,11 +37,15 @@ const Table = () => {
 
   return (
     <div className="p-6 space-y-8">
+      <div>
+        <span className="text-xs text-gray-500">Overview</span>
+        <h1 className="text-3xl text-gray-600">Data Tables</h1>
+      </div>
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <div className="p-4 border-b">
           <h2 className="text-lg font-medium text-blue-800">Active Users</h2>
         </div>
-        
+
         <div className="overflow-x-auto">
           <table className="min-w-full">
             <thead className="bg-gray-50 border-b">
@@ -74,7 +78,7 @@ const Table = () => {
         <div className="p-4 border-b border-gray-700">
           <h2 className="text-lg font-medium text-white">Inactive Users</h2>
         </div>
-        
+
         <div className="overflow-x-auto">
           <table className="min-w-full">
             <thead className="bg-base-content border-b border-gray-700">
