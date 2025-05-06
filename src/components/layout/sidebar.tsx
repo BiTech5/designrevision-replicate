@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo/shards-dashboards-logo.svg";
-import {FaTable, FaUser} from "react-icons/fa";
-import { MdVerticalSplit, MdNoteAdd, MdViewModule,MdError,MdEdit } from "react-icons/md";
+import { FaTable, FaUser } from "react-icons/fa";
+import { MdVerticalSplit, MdNoteAdd, MdViewModule, MdError, MdEdit } from "react-icons/md";
+
 const navItems = [
   { icon: <MdEdit />, text: "Blog Dashboard", path: "/dashboard" },
   { icon: <MdVerticalSplit />, text: "Blog Posts", path: "/posts" },
@@ -14,7 +15,7 @@ const navItems = [
 
 const Sidebar = () => {
   return (
-    <aside className="h-screen w-52">
+    <aside className="fixed top-0 left-0 h-full w-52 flex-shrink-0">
       <nav className="h-full flex flex-col border-r shadow-lg bg-white">
         <div className="p-4 flex items-center gap-2 font-semibold">
           <img src={logo} alt="logo" className="w-6" />
@@ -27,7 +28,8 @@ const Sidebar = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `p-4 flex items-center gap-3 transition-colors hover:bg-gray-100 w-full overflow-hidden shadow-sm ${isActive ? "bg-blue-50 border-l-4 border-blue-500" : ""
+                  `p-4 flex items-center gap-3 transition-colors hover:bg-gray-100 w-full overflow-hidden ${
+                    isActive ? "bg-blue-50 border-l-4 border-blue-500" : ""
                   }`
                 }
               >
