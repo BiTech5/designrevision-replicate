@@ -28,7 +28,7 @@ const Sidebar = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `p-4 flex items-center gap-3 transition-colors hover:bg-gray-100 w-full overflow-hidden ${
+                  `p-4 flex items-center gap-3 transition-colors hover:bg-gray-100 w-full overflow-hidden shadow-sm ${
                     isActive ? "bg-blue-50 border-l-4 border-blue-500" : ""
                   }`
                 }
