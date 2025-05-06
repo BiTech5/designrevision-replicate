@@ -1,5 +1,6 @@
 import Sidebar from "./components/layout/sidebar"
 import Navbar from "./components/layout/navbar"
+import Blog from "./pages/blog_posts"
 function App() {
 
   return (
@@ -7,6 +8,9 @@ function App() {
       <Sidebar />
       <div className="flex-1">
         <Navbar />
+        <div className="">
+          <Blog/>
+        </div>
       </div>
 
     </div>
