@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom"
 import Blog from "./pages/blog_posts"
 import Profile from "./pages/profile"
 import NotFound from "./components/Error/404"
+import NewPost from "./pages/new_post"
 function App() {
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -18,6 +19,8 @@ function App() {
             <Route path="/tables" element={<Table />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/new" element={<NewPost />} />
+
           </Routes>
         </div>
         <Footer />
