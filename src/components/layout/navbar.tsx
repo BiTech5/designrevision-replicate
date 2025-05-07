@@ -1,10 +1,8 @@
 import { MdNotifications } from "react-icons/md";
-import { FaCaretDown, FaUser } from "react-icons/fa";
-import { MdVerticalSplit, MdNoteAdd } from "react-icons/md";
-import { TbLogout } from "react-icons/tb";
-import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { FaCaretDown } from "react-icons/fa";
 
+import { useState, useRef, useEffect } from "react";
+import Profile from "../ui/profile_dropdown";
 import Notification from "../ui/notification_dropdown";
 const Navbar = () => {
   const [openProfile, setOpenProfile] = useState(false);
@@ -14,11 +12,7 @@ const Navbar = () => {
   const notificationDropdownRef = useRef<HTMLDivElement | null>(null);
   const notificationRef = useRef<HTMLDivElement | null>(null);
 
-  const profileDropdownMenu = [
-    { icon: <FaUser />, text: "Profile", path: "/profile" },
-    { icon: <MdVerticalSplit />, text: "Blog Posts", path: "/posts" },
-    { icon: <MdNoteAdd />, text: "Add New Post", path: "/new" },
-  ];
+  
 
 
   useEffect(() => {
@@ -108,34 +102,7 @@ const Navbar = () => {
           </div>
 
           {openProfile && (
-            <div
-              ref={profileDropdownRef}
-              className="absolute top-16 right-0 mt-2 w-52 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-dropdown"
-            >
-              <ul className="py-2 text-sm">
-                {profileDropdownMenu.map((item) => (
-                  <li key={item.path}>
-                    <Link
-                      to={item.path}
-                      className="flex items-center px-4 py-2 hover:bg-gray-100 text-gray-700"
-                    >
-                      <span className="text-lg text-gray-400 mr-2">{item.icon}</span>
-                      <span className="truncate">{item.text}</span>
-                    </Link>
-                  </li>
-                ))}
-                <hr className="my-1 border-gray-200" />
-                <li>
-                  <Link
-                    to="/logout"
-                    className="flex items-center px-4 py-2 hover:bg-gray-100 text-red-600"
-                  >
-                    <TbLogout className="text-lg mr-2" />
-                    <span className="truncate font-medium">Logout</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            <Profile profileDropdownRef={profileDropdownRef} />
           )}
         </div>
       </div>
