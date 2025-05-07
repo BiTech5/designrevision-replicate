@@ -11,10 +11,6 @@ const Navbar = () => {
   const avatarRef = useRef<HTMLDivElement | null>(null);
   const notificationDropdownRef = useRef<HTMLDivElement | null>(null);
   const notificationRef = useRef<HTMLDivElement | null>(null);
-
-  
-
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
