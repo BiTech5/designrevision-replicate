@@ -5,6 +5,7 @@ import { TbLogout } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
+import Notification from "../ui/notification_dropdown";
 const Navbar = () => {
   const [openProfile, setOpenProfile] = useState(false);
   const [openNotifications, setOpenNotifications] = useState(false);
@@ -19,14 +20,9 @@ const Navbar = () => {
     { icon: <MdNoteAdd />, text: "Add New Post", path: "/new" },
   ];
 
-  const notificationMenu = [
-    { text: "New comment on your post", time: "5m ago" },
-    { text: "Post liked by John Doe", time: "10m ago" },
-    { text: "New follower: Jane Smith", time: "1h ago" },
-  ];
 
   useEffect(() => {
-    const handleClickOutside = (event:MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         profileDropdownRef.current &&
         !profileDropdownRef.current.contains(event.target as Node) &&
@@ -89,22 +85,7 @@ const Navbar = () => {
           </div>
 
           {openNotifications && (
-            <div
-              ref={notificationDropdownRef}
-              className="absolute top-16 right-12 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-dropdown"
-            >
-              <ul className="py-2 text-sm">
-                {notificationMenu.map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start px-4 py-2 hover:bg-gray-100 text-gray-700"
-                  >
-                    <span className="truncate flex-1">{item.text}</span>
-                    <span className="text-xs text-gray-400 ml-2">{item.time}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Notification notificationDropdownRef={notificationDropdownRef} />
           )}
 
           <div
