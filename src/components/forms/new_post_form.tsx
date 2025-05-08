@@ -5,6 +5,7 @@ const PostForm = () => {
   const editor = useRef(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white rounded-lg shadow border border-gray-200">
@@ -18,18 +19,17 @@ const PostForm = () => {
           />
         </div>
         
-        <div className="p-4">
+        <div className="p-4 italic">
           <JoditEditor
             ref={editor}
             value={content}
             tabIndex={1}
             onBlur={newContent => setContent(newContent)}
-            onChange={newContent => setContent(newContent)}
             config={{
               height: 400,
               placeholder:"Words can be like x-rays if you use them properly... " 
             }}
-          className="italic"/>
+/>
         </div>
 
       </div>
