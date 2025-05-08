@@ -36,22 +36,7 @@ const PostForm = () => {
             }}
           className="italic"/>
         </div>
-        
-        <div className="p-4 flex justify-end space-x-3 border-t border-gray-200">
-          <button 
-            type="button"
-            className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
-          >
-            Cancel
-          </button>
-          <button 
-            type="button"
-            onClick={handleSubmit}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          >
-            Publish Post
-          </button>
-        </div>
+
       </div>
     </div>
   );
