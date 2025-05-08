@@ -7,25 +7,29 @@ import Blog from "./pages/blog_posts"
 import Profile from "./pages/profile"
 import NotFound from "./components/Error/404"
 import NewPost from "./pages/new_post"
+import { ThemeProvider } from "./components/theme/ThemeProvider"
 function App() {
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <Sidebar />
-      <div className="flex-1 ml-52 flex flex-col">
-        <Navbar />
-        <div className="p-4 flex-1  bg-gray-100">
-          <Routes>
-            <Route path="/posts" element={<Blog />} />
-            <Route path="/tables" element={<Table />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/new" element={<NewPost />} />
+    <ThemeProvider>
 
-          </Routes>
+      <div className="flex min-h-screen bg-gray-50">
+        <Sidebar />
+        <div className="flex-1 ml-52 flex flex-col">
+          <Navbar />
+          <div className="p-4 flex-1  bg-gray-100">
+            <Routes>
+              <Route path="/posts" element={<Blog />} />
+              <Route path="/tables" element={<Table />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/new" element={<NewPost />} />
+
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-    </div>
+    </ThemeProvider>
   )
 }
 
