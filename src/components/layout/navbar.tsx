@@ -66,13 +66,18 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center w-1/5 justify-between">
-          <div
-            className="border-r border-l px-2 flex items-center"
+            <div
+            className="border-r border-l px-2 flex items-center relative"
             ref={notificationRef}
             onClick={() => setOpenNotifications(!openNotifications)}
-          >
-            <MdNotifications className="text-gray-400 text-3xl cursor-pointer" />
-          </div>
+            >
+              <div className="relative">
+                <MdNotifications className="text-gray-400 text-3xl cursor-pointer" />
+                <span className="absolute bottom-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">
+                  2
+                </span>
+              </div>
+            </div>
 
           {openNotifications && (
             <Notification notificationDropdownRef={notificationDropdownRef} />
