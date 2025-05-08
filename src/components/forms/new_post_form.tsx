@@ -19,7 +19,7 @@ const PostForm = () => {
           />
         </div>
         
-        <div className="p-4 italic">
+        <div className="p-4 ">
           <JoditEditor
             ref={editor}
             value={content}
