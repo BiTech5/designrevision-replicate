@@ -19,18 +19,17 @@ const PostForm = () => {
           />
         </div>
         
-        <div className="p-4">
+        <div className="p-4 italic">
           <JoditEditor
             ref={editor}
             value={content}
             tabIndex={1}
             onBlur={newContent => setContent(newContent)}
-            onChange={newContent => setContent(newContent)}
             config={{
               height: 400,
               placeholder:"Words can be like x-rays if you use them properly... " 
             }}
-          className="italic"/>
+/>
         </div>
 
       </div>
