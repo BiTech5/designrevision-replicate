@@ -6,7 +6,7 @@ import ThemeSwitch from "../theme/theeswitcher";
 import useTheme from "../theme/usetheme";
 const navItems = [
   { icon: <MdEdit />, text: "Blog Dashboard", path: "/dashboard" },
-  { icon: <MdVerticalSplit />, text: "Blog Posts", path: "/posts" },
+  { icon: <MdVerticalSplit />, text: "Blog Posts", path: "/" },
   { icon: <MdNoteAdd />, text: "Add New Post", path: "/new" },
   { icon: <MdViewModule />, text: "Forms & Components", path: "/components" },
   { icon: <FaTable />, text: "Tables", path: "/tables" },

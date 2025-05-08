@@ -18,7 +18,7 @@ function App() {
           <Navbar />
           <div className="p-4 flex-1  bg-gray-100">
             <Routes>
-              <Route path="/posts" element={<Blog />} />
+              <Route path="/" element={<Blog />} />
               <Route path="/tables" element={<Table />} />
               <Route path="*" element={<NotFound />} />
               <Route path="/profile" element={<Profile />} />
