@@ -43,6 +43,7 @@ const Sidebar: React.FC<ToggleProps> = ({ sidebarToggle, setToggle }) => {
                   `p-4 flex items-center gap-3 transition-colors hover:bg-gray-10 w-full overflow-hidden shadow-sm ${isActive ? `bg-blue-50 border-l-4 border-${selectedColor}` : ""
                   }`
                 }
+                onClick={() => setToggle(!sidebarToggle)}
               >
                 {({ isActive }) => (
                   <>
